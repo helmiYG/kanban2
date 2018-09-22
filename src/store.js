@@ -15,17 +15,18 @@ export default new Vuex.Store({
   },
   actions: {
     createTask (context, payload) {
-      console.log(payload);
-      
       db.ref(`tasks/${payload.assignedTo}`).push(payload)
     },
 
     getAllTask (context) {
-      db.ref('tasks/').once('value')
-      .then((snapshot) => {
+      db.ref('tasks/').on('value', function(snapshot) {
         let tasks = snapshot.val()
-        context.commit('GET_TASKS', tasks)
+        context.commit('GET_TASKS', tasks) 
       })
+    },
+
+    removeTask(contest, payload) {
+      db.ref('tasks/'+payload.assignedTo+'/'+payload.id).remove()
     }
   }
 })

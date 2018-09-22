@@ -1,10 +1,10 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row body">
         <BackLog :taskBl="tasks.backlog"></BackLog>
         <ToDo :taskTd="tasks.todo"></ToDo>
-        <!-- <Progress :taskPR="AllTasks"></Progress> -->
-        <!-- <Completed :taskCM="AllTasks"></Completed>  -->
+        <Doing :taskDoing="tasks.doing"></Doing>
+        <Done :taskDone="tasks.done"></Done> 
     </div>
   </div>
 </template>
@@ -15,12 +15,16 @@ import {mapState, mapActions} from 'vuex'
 import HelloWorld from '@/components/HelloWorld.vue'
 import BackLog from '@/components/Backlog.vue'
 import ToDo from '@/components/Todo.vue'
+import Doing from '@/components/Doing.vue'
+import Done from '@/components/Done.vue'
 export default {
   name: 'home',
   components: {
     HelloWorld,
     BackLog,
-    ToDo
+    ToDo,
+    Doing,
+    Done
   },
   computed: {
     ...mapState( [
@@ -34,9 +38,13 @@ export default {
   },
   created () {
     this.getAllTask()
-  },
-  mounted() {
-    this.getAllTask()
-  },
+  }
 }
 </script>
+
+<style>
+.body {
+  margin-top: 30px
+}
+</style>
+

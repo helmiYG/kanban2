@@ -1,9 +1,9 @@
 <template>
      <div class="col-md-3">
-         <div class="card w-100" style="background-color: yellow">
+         <div class="card w-100" style="background-color: green">
             <div class="card-body">
-                <h5 class="card-title">To Do</h5>
-                    <ListTask :listTasks="taskTd"></ListTask>
+                <h5 class="card-title">Doing</h5>
+                    <ListTask :listTasks="taskDoing"></ListTask>
             </div>
         </div>
     </div>
@@ -12,7 +12,7 @@
 <script>
 import ListTask from '@/components/ListTask'
 export default {
-    props: ['taskTd'],
+    props: ['taskDoing'],
     components: {
         ListTask
     }

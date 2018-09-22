@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label for="inputStep">Assigned To</label>
-                        <input type="text" class="form-control" id="inputStep" placeholder="Assigned To" v-model="assignedTo">
+                        <input type="text" class="form-control" id="inputStep" placeholder="Assigned To" v-model="assignedTo" disabled>
                     </div>
             </form>
             </div>
@@ -45,7 +45,7 @@ export default {
             title: '',
             description: '',
             point: '',
-            assignedTo: ''
+            assignedTo: 'backlog'
         }
     },
     methods: {
@@ -62,7 +62,9 @@ export default {
             }
 
             this.createTask(obj)
-            this.getAllTask()
+            this.title = '',
+            this.description = '',
+            this.point = ''
         }
     }
 }
