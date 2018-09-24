@@ -1,10 +1,18 @@
 <template>
   <div class="container-fluid">
     <div class="row body">
-        <BackLog :taskBl="tasks.backlog"></BackLog>
-        <ToDo :taskTd="tasks.todo"></ToDo>
-        <Doing :taskDoing="tasks.doing"></Doing>
-        <Done :taskDone="tasks.done"></Done> 
+      <div class="col-lg-3 p-1">
+          <Board :tasks="tasks.backlog" :status="'backlog'"/>
+        </div>
+        <div class="col-lg-3 p-1">
+          <Board :tasks="tasks.todo" :status="'todo'"/>
+        </div>
+        <div class="col-lg-3 p-1">
+          <Board :tasks="tasks.doing" :status="'doing'"/>
+        </div>
+        <div class="col-lg-3 p-1">
+          <Board :tasks="tasks.done" :status="'done'"/>
+      </div>
     </div>
   </div>
 </template>
@@ -12,19 +20,13 @@
 <script>
 // @ is an alias to /src
 import {mapState, mapActions} from 'vuex'
-import HelloWorld from '@/components/HelloWorld.vue'
-import BackLog from '@/components/Backlog.vue'
-import ToDo from '@/components/Todo.vue'
-import Doing from '@/components/Doing.vue'
-import Done from '@/components/Done.vue'
+
+import Board from '@/components/Board.vue'
 export default {
   name: 'home',
   components: {
-    HelloWorld,
-    BackLog,
-    ToDo,
-    Doing,
-    Done
+
+    Board
   },
   computed: {
     ...mapState( [
